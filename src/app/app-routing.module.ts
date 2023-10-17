@@ -6,6 +6,7 @@ import { ItemComponent } from './item/item.component';
 
 const routes: Routes = [
   { path: "item", component: ItemComponent },
+  { path: "item/:item", component: ItemComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
 ];
 
