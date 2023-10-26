@@ -1,1 +1,5 @@
-<p>card-list works!</p>
+<div class="row">
+    <div *ngFor="let item of cardList" class="col">
+        <app-card-item [data]="item"></app-card-item>
+    </div>
+</div>

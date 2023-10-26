@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class CardItemComponent {
   @Input() data: any = {
     title: "Placeholder Title",
-    text: "Some quick example text to build on the card title and make up the bulk of the card's content."
+    text: "Some quick example text to build on the card title and make up the bulk of the card's content.",
+    imgSrc: "https://via.placeholder.com/640x360"
   };
 }

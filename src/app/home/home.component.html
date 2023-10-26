@@ -14,10 +14,7 @@
         </p>
     </div>
 </div>
-<div class="row">
-    <div *ngFor="let item of cardList" class="col">
-        <app-card-item [data]="item"></app-card-item>
-    </div>
-</div>
+
+<app-card-list [cardList]="cardList"></app-card-list>
 
 <!-- Deck of cards of games -->
