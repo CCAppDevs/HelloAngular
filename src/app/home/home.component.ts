@@ -25,12 +25,9 @@ export class HomeComponent {
     }
   ];
 
-  games = this.data.mockGameArray$;
+  games = this.data.games$;
 
   constructor(private data: DataService) {
-
     this.data.getAllGames();
-    this.data.getAllGames();
-
   }
 }

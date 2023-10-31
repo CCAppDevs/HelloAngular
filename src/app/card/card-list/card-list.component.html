@@ -1,5 +1,7 @@
 <div class="row">
-    <div *ngFor="let item of cardList" class="col">
+    <div *ngFor="let item of cardList | async" class="col">
         <app-card-item [data]="item"></app-card-item>
     </div>
 </div>
+
+<pre>{{ cardList | async | json }}</pre>

@@ -15,10 +15,7 @@
     </div>
 </div>
 
-<app-card-list [cardList]="cardList"></app-card-list>
+<app-card-list [cardList]="games"></app-card-list>
 
-<ul>
-    <li *ngFor="let item of games | async">{{ item.name }}</li>
-</ul>
-
+<!-- <pre>{{ games | async | json }}</pre> -->
 <!-- Deck of cards of games -->

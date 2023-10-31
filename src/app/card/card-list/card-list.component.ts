@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-card-list',
@@ -6,5 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./card-list.component.css']
 })
 export class CardListComponent {
-  @Input() cardList: any[] = [];
+  @Input() cardList: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
 }
