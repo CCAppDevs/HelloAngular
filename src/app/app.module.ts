@@ -10,6 +10,7 @@ import { CardItemComponent } from './card/card-item/card-item.component';
 import { CardListComponent } from './card/card-list/card-list.component';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { GameDetailComponent } from './game-detail/game-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     NavbarComponent,
     CardItemComponent,
-    CardListComponent
+    CardListComponent,
+    GameDetailComponent
   ],
   imports: [
     BrowserModule,
