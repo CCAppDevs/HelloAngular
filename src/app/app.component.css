@@ -1,17 +1,4 @@
-div.navbar {
-    display: flex;
-}
-
-ul.link-list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-}
-
-li.link {
-    margin: 5px;
-}
-
-li.link:hover {
-    background-color: hotpink;
+.bg-smash {
+    background-color: var(--MidnightGreen);
+    color: white;
 }
