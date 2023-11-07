@@ -1,7 +1,10 @@
-<div class="row game-list mt-2">
-    <div *ngFor="let item of cardList | async" class="col">
-        <app-card-item [data]="item"></app-card-item>
+<div class="container mt-5">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 game-list mt-2 g-3">
+        <div *ngFor="let item of cardList | async" class="col">
+            <app-card-item [data]="item"></app-card-item>
+        </div>
     </div>
 </div>
+
 
 <pre>{{ cardList | async | json }}</pre>

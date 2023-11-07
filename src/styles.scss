@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*
+Midnight Green - #003638
+Accent Mint - #34af86
+Light Mint - #46ecb5
+Atomic Tangerine - #F2A183
+Sunspot yellow - #f2e783
+White - #f9f9f9
+*/
+
+$body-bg-dark:    #003638;
+$body-tertiary-bg-dark:  #F2A183;
+$body-emphasis-color-dark: #000000;
+$primary: #F2A183;
+
+$font-family-sans-serif: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
+@import '../node_modules/bootstrap/scss/bootstrap';
