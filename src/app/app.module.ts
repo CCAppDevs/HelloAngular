@@ -11,6 +11,7 @@ import { CardListComponent } from './card/card-list/card-list.component';
 import { DataService } from './data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GameDetailComponent } from './game-detail/game-detail.component';
+import { CalloutComponent } from './Block/callout/callout.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
     NavbarComponent,
     CardItemComponent,
     CardListComponent,
-    GameDetailComponent
+    GameDetailComponent,
+    CalloutComponent
   ],
   imports: [
     BrowserModule,
