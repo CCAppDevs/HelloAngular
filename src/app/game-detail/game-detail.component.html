@@ -12,8 +12,21 @@
     </div>
 </div>
 
-<app-callout></app-callout>
+<app-callout>{{ game.description }}</app-callout>
 
+<div class="container text-center">
+    <div class="row">
+        <div *ngFor="let feature of game.features" class="col">
+            <div class="card">
+                <img [src]="feature.image" class="card-img-top" alt="placeholder">
+                <div class="card-body">
+                    <h5 class="card-title">{{ feature.name }}</h5>
+                    <p class="card-text">{{ feature.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
