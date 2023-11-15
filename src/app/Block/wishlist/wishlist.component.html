@@ -1,0 +1,9 @@
+<h3>Wishlist our game!</h3>
+
+<form [formGroup]="wishlistForm" (ngSubmit)="onSubmit()">
+    <div class="input-group">
+        <label class="input-group-text text-black">Email:</label>
+        <input type="text" class="form-control" formControlName="email">
+        <button class="btn btn-secondary">Submit</button>
+    </div>
+</form>
