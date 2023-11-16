@@ -1,9 +1,14 @@
 <h3>Wishlist our game!</h3>
 
-<form [formGroup]="wishlistForm" (ngSubmit)="onSubmit()">
+<form *ngIf="!hasWishlisted" [formGroup]="wishlistForm" (ngSubmit)="onSubmit()">
     <div class="input-group">
         <label class="input-group-text text-black">Email:</label>
         <input type="text" class="form-control" formControlName="email">
-        <button class="btn btn-secondary">Submit</button>
+        <button class="btn btn-secondary" [disabled]="!wishlistForm.valid || !wishlistForm.touched">Submit</button>
+    </div>
+    <div *ngIf="wishlistForm.controls['email'].invalid && !wishlistForm.pristine">
+        <p class="text-danger">Please enter a valid email.</p>
     </div>
 </form>
+
+<pre>is valid: {{ wishlistForm.valid | json }}</pre>

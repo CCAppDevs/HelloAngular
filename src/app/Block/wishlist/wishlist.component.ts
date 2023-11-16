@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-wishlist',
@@ -9,9 +9,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class WishlistComponent implements OnInit {
   @Input() gameId: string = "";
 
+  hasWishlisted: boolean = false;
+
   wishlistForm: FormGroup = this.fb.group({
-    gameId: '',
-    email: 'joe@gamer.com'
+    gameId: ['', Validators.required],
+    email: ['placeholder', [Validators.required, Validators.email]]
   });
 
   constructor(private fb: FormBuilder) {
@@ -25,7 +27,8 @@ export class WishlistComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('wishlist added', this.wishlistForm.value);
+    console.log('wishlist added', this.wishlistForm);
+    this.hasWishlisted = true;
   }
 
 }
