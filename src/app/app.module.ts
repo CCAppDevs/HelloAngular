@@ -14,6 +14,7 @@ import { GameDetailComponent } from './game-detail/game-detail.component';
 import { CalloutComponent } from './Block/callout/callout.component';
 import { WishlistComponent } from './Block/wishlist/wishlist.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GameEditComponent } from './game-edit/game-edit.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CardListComponent,
     GameDetailComponent,
     CalloutComponent,
-    WishlistComponent
+    WishlistComponent,
+    GameEditComponent
   ],
   imports: [
     BrowserModule,
