@@ -9,23 +9,23 @@
             <form [formGroup]="gameForm" (ngSubmit)="submitForm()">
                 <div>
                     <label class="form-label">GameID</label>
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" formControlName="gameId" />
                 </div>
                 <div>
                     <label class="form-label">Title</label>
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" formControlName="title"/>
                 </div>
                 <div>
                     <label class="form-label">Short Description</label>
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" rows="3" formControlName="shortDescription"></textarea>
                 </div>
                 <div>
                     <label class="form-label">Description</label>
-                    <textarea class="form-control" rows="6"></textarea>
+                    <textarea class="form-control" rows="6" formControlName="description"></textarea>
                 </div>
                 <div>
                     <label class="form-label">Image</label>
-                    <input type="text" class="form-control" />
+                    <input type="text" class="form-control" formControlName="image"/>
                 </div>
                 <div>
                     <button class="btn btn-primary">Submit</button>

@@ -37,6 +37,15 @@ export class DataService {
   
   // get one by id
   // create new
+  createGame(game: any): void {
+    this.http.post<any>(`${this.baseURL}/games`, game).subscribe(result => {
+      this.getAllGames();
+    })
+  }
+
   // update existing
   // delete by id
+  deleteGame(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.baseURL}/games/${id}`);
+  }
 }
