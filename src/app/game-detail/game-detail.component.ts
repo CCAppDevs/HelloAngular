@@ -42,6 +42,7 @@ export class GameDetailComponent implements OnInit {
 
   editGame(): void {
     // when clicked, open the edit page
+    this.router.navigate(['games', this.id, 'edit']);
   }
 
   deleteGame(): void  {

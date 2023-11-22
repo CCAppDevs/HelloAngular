@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: "item/:item", component: ItemComponent },
   { path: "games/create", component: GameEditComponent },
   { path: "games/:id", component: GameDetailComponent },
+  { path: "games/:id/edit", component: GameEditComponent },
   { path: '', pathMatch: 'full', component: HomeComponent },
 ];
 

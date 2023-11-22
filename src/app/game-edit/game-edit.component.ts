@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-game-edit',
@@ -9,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./game-edit.component.css']
 })
 export class GameEditComponent {
+
+  id: string = "";
 
   gameForm: FormGroup = this.fb.group({
     gameId: ['', Validators.required],
@@ -27,7 +30,34 @@ export class GameEditComponent {
     ])
   });
 
-  constructor(private data: DataService, private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private data: DataService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+
+    this.route.paramMap.pipe(
+      switchMap(params => {
+        this.id = params.get('id') || "";
+        return this.data.getOneGame(this.id);
+      })
+    ).subscribe(result => {
+      console.log("the game", result);
+      this.initForm(result);
+    })
+  }
+
+  initForm(game: any): void {
+    this.gameForm.patchValue({
+     gameId: game.gameId,
+     title: game.title,
+     shortDescription: game.shortDescription,
+     description: game.description,
+     image: game.image,
+     features: game.features 
+    });
+  }
 
   submitForm(): void {
     console.log(this.gameForm.value);
@@ -41,8 +71,16 @@ export class GameEditComponent {
       features: this.gameForm.value.features
     }
 
-    this.data.createGame(game);
+    // if we are not editing
+    if (this.id == "") {
+      this.data.createGame(game);
+      this.router.navigate(['']);
+    }
+    else {
+      this.data.updateGame(game);
+      this.router.navigate(['games', game.gameId]);
+    }      
 
-    this.router.navigate(['']);
+
   }
 }

@@ -43,6 +43,12 @@ export class DataService {
     })
   }
 
+  updateGame(game: any): void {
+    this.http.put<any>(`${this.baseURL}/games/${game.gameId}`, game).subscribe(result => {
+      this.getAllGames();
+    })
+  }
+
   // update existing
   // delete by id
   deleteGame(id: string): Observable<any> {
