@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { switchMap } from 'rxjs';
 
@@ -9,7 +9,7 @@ import { switchMap } from 'rxjs';
   templateUrl: './game-edit.component.html',
   styleUrls: ['./game-edit.component.css']
 })
-export class GameEditComponent {
+export class GameEditComponent implements OnInit {
 
   id: string = "";
 
@@ -19,15 +19,13 @@ export class GameEditComponent {
     shortDescription: ['', Validators.required],
     description: ['', Validators.required],
     image: ['/assets/images/placeholder.png', Validators.required],
-    features: this.fb.array([
-      this.fb.group({
-        gameFeatureId: [''],
-        gameId: [''],
-        name: ['new feature'],
-        description: ['description of feature'],
-        image: ['/assets/images/placeholder.png']
-      })
-    ])
+    features: this.fb.array([{
+      description: [''],
+      gameFeatureId: [''],
+      gameId: [''],
+      image: [''],
+      name: ['']
+    }])
   });
 
   constructor(
@@ -35,8 +33,9 @@ export class GameEditComponent {
     private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute
-  ) {
+  ) {}
 
+  ngOnInit(): void {
     this.route.paramMap.pipe(
       switchMap(params => {
         this.id = params.get('id') || "";
@@ -45,10 +44,13 @@ export class GameEditComponent {
     ).subscribe(result => {
       console.log("the game", result);
       this.initForm(result);
+      console.log("the form", this.gameForm.value);
     })
   }
 
   initForm(game: any): void {
+    console.log("inside initform", game.features);
+
     this.gameForm.patchValue({
      gameId: game.gameId,
      title: game.title,
@@ -57,6 +59,10 @@ export class GameEditComponent {
      image: game.image,
      features: game.features 
     });
+  }
+
+  get features() {
+    return this.gameForm.get('features') as FormArray;
   }
 
   submitForm(): void {
