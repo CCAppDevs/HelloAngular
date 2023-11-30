@@ -28,16 +28,24 @@
                     <input type="text" class="form-control" formControlName="image"/>
                 </div>
                 <!-- start dynamic controls -->
+                <div class="row">
+                    <div class="btn btn-primary" (click)="addNewFeature()" >Add New Feature</div>
+                </div>
                 <div class="row" formArrayName="features">
                     <div class="col" *ngFor="let feature of features.controls; let i = index" [formGroupName]="i">
                         <div>
                             <label class="form-label">Feature Name</label>
-                            <input type="text" class="form-control" formContolName="name"/>
+                            <input type="text" class="form-control" formControlName="name"/>
                         </div>
                         
                         <div>
                             <label class="form-label">Feature Description</label>
-                            <input type="text" class="form-control" formContolName="description"/>
+                            <input type="text" class="form-control" formControlName="description"/>
+                        </div>
+
+                        <div>
+                            <label class="form-label">Feature Image</label>
+                            <input type="text" class="form-control" formControlName="image"/>
                         </div>
                     </div>
                 </div>

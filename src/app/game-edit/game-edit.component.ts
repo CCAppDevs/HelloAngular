@@ -19,13 +19,7 @@ export class GameEditComponent implements OnInit {
     shortDescription: ['', Validators.required],
     description: ['', Validators.required],
     image: ['/assets/images/placeholder.png', Validators.required],
-    features: this.fb.array([{
-      description: [''],
-      gameFeatureId: [''],
-      gameId: [''],
-      image: [''],
-      name: ['']
-    }])
+    features: this.fb.array([])
   });
 
   constructor(
@@ -56,13 +50,37 @@ export class GameEditComponent implements OnInit {
      title: game.title,
      shortDescription: game.shortDescription,
      description: game.description,
-     image: game.image,
-     features: game.features 
+     image: game.image
+    });
+
+    // TODO add all features into the features array
+    game.features.forEach((gameFeature: any) => {
+      this.features.push(this.makeFeatureGroup(gameFeature));
     });
   }
 
   get features() {
     return this.gameForm.get('features') as FormArray;
+  }
+
+  makeFeatureGroup(gameFeature: any): FormGroup {
+    return this.fb.group({
+      gameFeatureId: [gameFeature.gameFeatureId, Validators.required],
+      gameId: [gameFeature.gameId, Validators.required],
+      name: [gameFeature.name, Validators.required],
+      description: [gameFeature.description, Validators.required],
+      image: [gameFeature.image, Validators.required]
+    });
+  }
+
+  addNewFeature(): void {
+    this.features.push(this.fb.group({
+      gameFeatureId: ['', Validators.required],
+      gameId: ['', Validators.required],
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      image: ['/assets/images/placeholder.png', Validators.required]
+    }))
   }
 
   submitForm(): void {
