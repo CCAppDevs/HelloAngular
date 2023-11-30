@@ -57,6 +57,7 @@ export class GameEditComponent implements OnInit {
     game.features.forEach((gameFeature: any) => {
       this.features.push(this.makeFeatureGroup(gameFeature));
     });
+    
   }
 
   get features() {
