@@ -19,13 +19,7 @@ export class GameEditComponent implements OnInit {
     shortDescription: ['', Validators.required],
     description: ['', Validators.required],
     image: ['/assets/images/placeholder.png', Validators.required],
-    features: this.fb.array([{
-      description: [''],
-      gameFeatureId: [''],
-      gameId: [''],
-      image: [''],
-      name: ['']
-    }])
+    features: this.fb.array([])
   });
 
   constructor(
@@ -56,9 +50,19 @@ export class GameEditComponent implements OnInit {
      title: game.title,
      shortDescription: game.shortDescription,
      description: game.description,
-     image: game.image,
-     features: game.features 
+     image: game.image
     });
+
+    game.features.forEach((feature: any) => {
+      this.features.push(this.fb.group({
+        gameFeatureId: [feature.gameFeatureId, Validators.required],
+        name: [feature.name, Validators.required],
+        description: [feature.description, Validators.required],
+        gameId: [feature.gameId, Validators.required],
+        image: [feature.image, Validators.required]
+      }));  
+    });
+    
   }
 
   get features() {
