@@ -74,6 +74,10 @@ export class GameEditComponent implements OnInit {
     });
   }
 
+  removeFeature(index: number): void {
+    this.features.removeAt(index);
+  }
+
   addNewFeature(): void {
     this.features.push(this.fb.group({
       gameFeatureId: ['', Validators.required],
